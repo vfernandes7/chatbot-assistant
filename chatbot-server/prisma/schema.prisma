@@ -9,6 +9,22 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+model requisicaoMensagem {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  threadId            String
+  conteudoMensagem    String?
+  instrucoesExtras    String?
+  dateTimeRequisicao  DateTime?  @default(now())
+  repostaChatbot      String?
+  dateTimeResposta    DateTime?
+}
+
+model threadsCriadas {
+  id                  String   @id @default(auto()) @map("_id") @db.ObjectId
+  dataCriacao         DateTime?  @default(now())
+  threadId            String
 }
