@@ -1,6 +1,7 @@
 import express from 'express'
 import OpenAI from "openai";
 import * as dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config()
 
 import { PrismaClient } from '@prisma/client'
@@ -9,6 +10,7 @@ const prisma = new PrismaClient()
 
 const app = express()
 app.use(express.json());
+app.use(cors())
 
 
 // Funções OpenAI
